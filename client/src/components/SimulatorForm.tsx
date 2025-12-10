@@ -56,11 +56,11 @@ export default function SimulatorForm({ onSubmit }: SimulatorFormProps) {
         </div>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6" noValidate>
             <FormField
               control={form.control}
               name="budget"
-              render={({ field }) => (
+              render={({ field, fieldState }) => (
                 <FormItem>
                   <FormLabel className="text-sm sm:text-base font-medium text-foreground">
                     Mon budget marketing mensuel
@@ -81,7 +81,7 @@ export default function SimulatorForm({ onSubmit }: SimulatorFormProps) {
                       </span>
                     </div>
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage fieldState={fieldState} />
                 </FormItem>
               )}
             />
@@ -89,7 +89,7 @@ export default function SimulatorForm({ onSubmit }: SimulatorFormProps) {
             <FormField
               control={form.control}
               name="valeurClient"
-              render={({ field }) => (
+              render={({ field, fieldState }) => (
                 <FormItem>
                   <FormLabel className="text-sm sm:text-base font-medium text-foreground">
                     Ce que me rapporte un client (en moyenne)
@@ -110,7 +110,7 @@ export default function SimulatorForm({ onSubmit }: SimulatorFormProps) {
                       </span>
                     </div>
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage fieldState={fieldState} />
                 </FormItem>
               )}
             />
@@ -118,13 +118,14 @@ export default function SimulatorForm({ onSubmit }: SimulatorFormProps) {
             <FormField
               control={form.control}
               name="secteur"
-              render={({ field }) => (
+              render={({ field, fieldState }) => (
                 <FormItem>
                   <FormLabel className="text-sm sm:text-base font-medium text-foreground">
                     Mon secteur d'activité
                   </FormLabel>
                   <Select
                     onValueChange={field.onChange}
+                    value={field.value}
                     defaultValue={field.value}
                   >
                     <FormControl>
@@ -140,7 +141,7 @@ export default function SimulatorForm({ onSubmit }: SimulatorFormProps) {
                       ))}
                     </SelectContent>
                   </Select>
-                  <FormMessage />
+                  <FormMessage fieldState={fieldState} />
                 </FormItem>
               )}
             />

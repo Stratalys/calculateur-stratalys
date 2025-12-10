@@ -65,7 +65,7 @@ export default function ContactFormSection({
               <FormField
                 control={form.control}
                 name="nom"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem>
                     <FormControl>
                       <Input
@@ -75,7 +75,7 @@ export default function ContactFormSection({
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage fieldState={fieldState} />
                   </FormItem>
                 )}
               />
@@ -83,7 +83,7 @@ export default function ContactFormSection({
               <FormField
                 control={form.control}
                 name="email"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem>
                     <FormControl>
                       <Input
@@ -94,7 +94,7 @@ export default function ContactFormSection({
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage fieldState={fieldState} />
                   </FormItem>
                 )}
               />
@@ -103,7 +103,7 @@ export default function ContactFormSection({
             <FormField
               control={form.control}
               name="defi"
-              render={({ field }) => (
+              render={({ field, fieldState }) => (
                 <FormItem>
                   <FormControl>
                     <Textarea
@@ -113,7 +113,7 @@ export default function ContactFormSection({
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage fieldState={fieldState} />
                 </FormItem>
               )}
             />
@@ -122,13 +122,14 @@ export default function ContactFormSection({
               <FormField
                 control={form.control}
                 name="timing"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem>
                     <FormLabel className="text-sm sm:text-base text-foreground font-medium">
                       Vous souhaitez démarrer quand ?
                     </FormLabel>
                     <Select
                       onValueChange={field.onChange}
+                      value={field.value}
                       defaultValue={field.value}
                     >
                       <FormControl>
@@ -144,7 +145,7 @@ export default function ContactFormSection({
                         ))}
                       </SelectContent>
                     </Select>
-                    <FormMessage />
+                    <FormMessage fieldState={fieldState} />
                   </FormItem>
                 )}
               />
@@ -152,13 +153,14 @@ export default function ContactFormSection({
               <FormField
                 control={form.control}
                 name="helpLevel"
-                render={({ field }) => (
+                render={({ field, fieldState }) => (
                   <FormItem>
                     <FormLabel className="text-sm sm:text-base text-foreground font-medium">
                       Quel niveau d'aide imaginez-vous ?
                     </FormLabel>
                     <Select
                       onValueChange={field.onChange}
+                      value={field.value}
                       defaultValue={field.value}
                     >
                       <FormControl>
@@ -174,7 +176,7 @@ export default function ContactFormSection({
                         ))}
                       </SelectContent>
                     </Select>
-                    <FormMessage />
+                    <FormMessage fieldState={fieldState} />
                   </FormItem>
                 )}
               />

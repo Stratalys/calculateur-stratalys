@@ -135,11 +135,11 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-violet-50 to-purple-50 relative overflow-hidden">
       {/* Background gradients - optimisés pour mobile */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#4A3AFD]/20 via-background to-[#4A3AFD]/10" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] bg-[#4A3AFD]/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-[#4A3AFD]/8 rounded-full blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-100/30 via-violet-100/20 to-purple-100/30" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] sm:w-[800px] h-[600px] sm:h-[800px] bg-purple-200/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-violet-200/20 rounded-full blur-3xl" />
       
       <div className="relative container mx-auto px-4 sm:px-6 py-6 sm:py-8 md:py-12">
         {currentStep === 2 && (

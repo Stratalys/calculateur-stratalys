@@ -84,9 +84,9 @@ const SelectContent = ({ children }: { children?: React.ReactNode }) => {
   return (
     <div
       ref={ref}
-      className="absolute z-50 min-w-full w-full overflow-hidden rounded-md border bg-white text-foreground shadow-lg mt-1 top-full left-0 max-h-60 overflow-y-auto"
+      className="absolute z-50 min-w-full w-full overflow-hidden rounded-lg border border-gray-200 bg-white text-foreground shadow-xl mt-1 top-full left-0 max-h-60 overflow-y-auto"
     >
-      <div className="p-1">
+      <div className="py-1">
         {children}
       </div>
     </div>
@@ -95,7 +95,10 @@ const SelectContent = ({ children }: { children?: React.ReactNode }) => {
 
 const SelectValue = ({ placeholder }: { placeholder?: string }) => {
   const { value } = React.useContext(SelectContext)
-  return <span>{value || placeholder}</span>
+  if (value) {
+    return <span>{value}</span>
+  }
+  return <span className="text-muted-foreground">{placeholder}</span>
 }
 
 interface SelectItemProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -110,15 +113,22 @@ const SelectItem = ({ value, children, ...props }: SelectItemProps) => {
   return (
     <div
       className={cn(
-        "relative flex cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-muted",
-        isSelected && "bg-muted"
+        "relative flex cursor-pointer select-none items-center px-4 py-3 text-sm outline-none transition-colors",
+        isSelected 
+          ? "bg-primary text-primary-foreground font-medium" 
+          : "text-foreground hover:bg-gray-100"
       )}
       onClick={() => {
         onValueChange?.(value)
       }}
       {...props}
     >
-      {children}
+      {isSelected && (
+        <svg className="w-4 h-4 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+        </svg>
+      )}
+      <span className={cn(!isSelected && "ml-6")}>{children}</span>
     </div>
   )
 }
