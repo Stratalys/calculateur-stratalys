@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Controller, useFormContext } from "react-hook-form"
+import { Controller } from "react-hook-form"
 import { cn } from "@/lib/utils"
 
 interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
@@ -13,7 +13,7 @@ const Form = ({ children, ...props }: FormProps) => {
 interface FormFieldProps {
   control: any
   name: string
-  render: (props: { field: any; fieldState?: any }) => React.ReactNode
+  render: (props: { field: any; fieldState?: any }) => React.ReactElement
 }
 
 const FormField = ({ control, name, render }: FormFieldProps) => {
@@ -21,7 +21,7 @@ const FormField = ({ control, name, render }: FormFieldProps) => {
     <Controller
       control={control}
       name={name}
-      render={({ field, fieldState }) => render({ field, fieldState })}
+      render={({ field, fieldState }) => render({ field, fieldState }) as React.ReactElement}
     />
   )
 }

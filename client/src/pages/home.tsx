@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import StepIndicator from "@/components/StepIndicator";
 import SimulatorForm from "@/components/SimulatorForm";
